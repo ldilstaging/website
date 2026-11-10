@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Love Dynamo Innovation Labs</title>
+<meta name="description" content="Love Dynamo Innovation Labs: world-class immersive experiences in movement, play and learning. Three decades of games, immersive fitness, wellness, sports and learning, helping to shape and expand some of the world&#8217;s biggest brands.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@600;800&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a gallery wall. The work hangs big, framed in the logo's cream line art,
+   in a rhythm of one wide piece, then pairs, then threes. Click any piece to see it full screen. */
+:root{
+  --night:#0b030f;
+  --cream:#f7f3ed;
+  --dim:#a99db3;
+  --rule:#2a1f33;
+  --pink:#fc4988;
+  --tang:#fd7f4a;
+  --lemon:#fee146;
+  --mint:#43e1b2;
+  --sky:#4fb3fe;
+  --violet:#a26dfc;
+  --rainbow:linear-gradient(90deg,var(--pink) 0 16.66%,var(--tang) 0 33.33%,var(--lemon) 0 50%,var(--mint) 0 66.66%,var(--sky) 0 83.33%,var(--violet) 0);
+  --display:"Lexend Exa", "Arial Black", system-ui, sans-serif;
+  --body:"Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap:1280px;
+  --gut:clamp(16px,4vw,48px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--cream);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lemon);outline-offset:3px;border-radius:10px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+
+/* header */
+.top{padding:clamp(22px,3vw,36px) 0 0}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:clamp(14px,1.6vw,22px);text-decoration:none}
+.brand .abby{width:clamp(82px,9vw,120px);flex:none}
+.lockup{width:clamp(190px,22vw,300px);margin:0}
+.lockup img{width:100%}
+.tagrow{display:flex;align-items:center;gap:.65em;margin-top:.6em;font-size:clamp(10.5px,1vw,14px)}
+.tagrow .bar{flex:1;height:.72em;background:var(--rainbow)}
+.tagrow .t{font-weight:600;letter-spacing:.06em;line-height:1;white-space:nowrap}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 16px;border:2px solid var(--cream);border-radius:999px;transition:background .2s,color .2s}
+.nav a:hover{background:var(--cream);color:var(--night)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(36px,5vw,64px)}
+.friends{width:clamp(280px,26vw,360px);display:flex;flex-direction:column;gap:18px}
+.logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 24px;align-items:center;justify-items:center}
+.logos img{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px);object-fit:contain}
+.friends span{color:var(--dim);font-size:14px;font-weight:300}
+.intro{margin:0}
+.headline{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.7vw,54px);line-height:1.08;letter-spacing:-.03em;margin:0;max-width:17ch;text-wrap:balance}
+.sub{margin:22px 0 0;max-width:46ch;font-size:clamp(17px,1.5vw,21px);line-height:1.5;font-weight:300;color:#e4dbe9}
+
+
+/* pillar pills */
+.pillars{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.pillar{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 7px;border:3px solid var(--k);border-radius:999px;text-decoration:none;transition:background .2s,transform .2s}
+.pillar:hover{transform:translateY(-2px)}
+.pillar:hover,.pillar[aria-current="true"]{background:color-mix(in srgb,var(--k) 18%,transparent)}
+.pillar .badge{width:38px;border-width:2.5px}
+.pillar b{font-family:var(--display);font-weight:800;font-size:clamp(18px,1.6vw,22px);letter-spacing:-.02em;color:var(--k);line-height:1}
+.pillar .go{width:18px;height:18px;color:var(--k);display:grid;place-items:center}
+.pillar .go svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+
+
+
+/* platforms we're building for */
+.plat{margin-top:clamp(44px,5.5vw,72px)}
+.plat-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.plat-head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.6vw,36px);letter-spacing:-.025em;line-height:1.1;margin:0}
+.plat-head h2 .rb{display:inline-block;width:1.6em;height:.32em;background:var(--rainbow);margin:0 .35em .14em 0;vertical-align:middle}
+.plat-head p{margin:0;color:var(--dim);font-size:15px}
+.plat-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(16px,1.8vw,26px) clamp(14px,1.6vw,22px)}
+.plat-grid .tile{grid-column:span 2}
+.plat-grid .tile:nth-child(5){grid-column:2 / span 2}
+.plat-grid .frame{border-radius:18px;padding:5px}
+.plat-grid .art{border-radius:12px}
+.plat-grid .cap{flex-direction:column;align-items:flex-start;gap:2px;padding:10px 4px 0}
+.plat-grid .cap b{font-size:clamp(15px,1.3vw,18px)}
+.plat-grid .cap span{font-size:13.5px;text-align:left;white-space:normal;line-height:1.35}
+
+/* reel */
+.reel{margin-top:clamp(48px,6vw,80px);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;cursor:grab;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.reel::-webkit-scrollbar{display:none}
+.reel.dragging{cursor:grabbing}
+.reel.fine{overflow:hidden;touch-action:pan-y}
+.reel.fine .reel-track{will-change:transform}
+.reel img{-webkit-user-drag:none;user-select:none}
+.reel{user-select:none;-webkit-user-select:none}
+.reel.dragging .tile{pointer-events:none}
+.reel-track{display:flex;align-items:flex-start;gap:clamp(14px,1.6vw,22px);width:max-content;padding:6px 0 4px}
+.reel .tile{flex:none;width:clamp(230px,22vw,330px)}
+.reel .frame{border-radius:18px;padding:5px}
+.reel .art{border-radius:12px}
+.reel .cap{padding:9px 4px 0}
+.reel .cap b{font-size:15px}
+.reel .cap span{display:none}
+
+/* chapters */
+.chapter{padding:clamp(56px,7vw,96px) 0 0}
+.chap-head{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+.chap-head h2{font-family:var(--display);font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;margin:0;color:var(--k)}
+.badge{flex:none;width:clamp(44px,4.4vw,62px);aspect-ratio:1;border:3px solid var(--k);border-radius:50%;display:grid;place-items:center}
+.badge svg{width:56%;height:56%;stroke:var(--k);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.chap-head p{margin:0 0 0 auto;color:var(--dim);font-size:15px;text-align:right;max-width:22ch;line-height:1.35}
+
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(18px,2.4vw,32px) clamp(14px,1.8vw,24px)}
+.tile{grid-column:span 3;display:flex;flex-direction:column;justify-content:flex-start;align-self:start;width:100%;padding:0;margin:0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:zoom-in}
+.tile.f{grid-column:span 6}
+.tile.t{grid-column:span 2}
+.frame,.art{display:block}
+.frame{border:3px solid var(--cream);border-radius:22px;padding:7px;transition:border-color .2s,transform .3s ease}
+.art{border-radius:15px;overflow:hidden;aspect-ratio:16/9;background:#000}
+.tile.f .art{aspect-ratio:21/9}
+.art img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.tile:hover .frame,.tile:focus-visible .frame{border-color:var(--c);transform:translateY(-3px)}
+.tile:hover .art img{transform:scale(1.03)}
+.cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 6px 0}
+.cap b{font-family:var(--display);font-weight:800;font-size:clamp(17px,1.6vw,22px);letter-spacing:-.015em;line-height:1.2}
+.cap span{color:var(--dim);font-size:14.5px;text-align:right;white-space:nowrap}
+.tile.f .cap b{font-size:clamp(20px,2vw,28px)}
+.cap b{text-wrap:balance}
+@media (max-width:1100px){.cap{flex-direction:column;align-items:flex-start;gap:3px}.cap span{text-align:left;white-space:normal}}
+
+.also{margin-top:clamp(28px,3vw,40px)}
+.also > p{color:var(--dim);font-size:15px;margin:0 0 12px}
+.also-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 16px}
+.also-strip .tile{grid-column:auto}
+.also-strip .frame{border-width:2px;border-radius:14px;padding:4px}
+.also-strip .art{border-radius:10px;aspect-ratio:2/1}
+.also-strip .cap{padding:7px 2px 0}
+.also-strip .cap b{font-family:var(--body);font-weight:500;font-size:13px;letter-spacing:0}
+
+/* us + contact */
+.us{padding:clamp(72px,9vw,120px) 0 0}
+.us .rainbow{height:8px;background:var(--rainbow);border-radius:2px;margin-bottom:clamp(40px,5vw,64px)}
+.us h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.03em;margin:0 0 26px}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.who{border:3px solid var(--cream);border-radius:22px;padding:24px 24px;display:flex;align-items:center;gap:20px}
+.who .face{flex:none;width:clamp(84px,7vw,96px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--cream);box-shadow:0 0 0 5px var(--night),0 0 0 8px var(--c)}
+@media (max-width:560px){.who{gap:16px;padding:18px}.who .face{width:76px;border-width:2px;box-shadow:0 0 0 4px var(--night),0 0 0 6px var(--c)}.who b{font-size:19px}.who small{margin:6px 0 10px;font-size:12px}.who p{font-size:14.5px}}
+.who b{display:block;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.who small{display:inline-block;color:var(--night);background:var(--c);font-weight:500;font-size:13px;margin:10px 0 14px;padding:3px 11px;border-radius:999px}
+.who .nw{white-space:nowrap}
+.who p{margin:0;color:#e2d8e8;font-weight:300;font-size:14.5px;line-height:1.55;text-wrap:pretty}
+.brands{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-top:44px}
+.brands span{color:var(--dim);font-size:15px;max-width:15ch;font-weight:300}
+.brands img{width:min(100%,340px)}
+.contact{padding-top:clamp(64px,8vw,110px);padding-bottom:clamp(48px,6vw,80px);display:flex;align-items:center;justify-content:center;gap:28px}
+.contact .mini{width:104px;flex:none}
+.bubble{position:relative;border:3px solid var(--cream);border-radius:30px;padding:22px 28px;max-width:100%}
+.bubble::before{content:"";position:absolute;left:-14px;top:50%;width:22px;height:22px;background:var(--night);border-left:3px solid var(--cream);border-bottom:3px solid var(--cream);transform:translateY(-50%) rotate(45deg)}
+.bubble p{margin:0 0 6px;color:var(--dim);font-size:15px;text-wrap:balance}
+.bubble .cta{display:block;font-weight:600;font-size:clamp(17px,1.6vw,21px);color:var(--cream);margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
+.bubble a{font-family:var(--display);font-weight:800;font-size:clamp(18px,2.6vw,34px);letter-spacing:-.02em;text-decoration:none;word-break:break-word}
+.bubble a:hover{color:var(--pink)}
+footer{border-top:1px solid var(--rule);padding:22px 0 34px;color:var(--dim);font-size:13px;font-weight:300}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer p{margin:0;max-width:62ch}
+
+/* full-screen viewer */
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(11,3,15,.96);display:none;flex-direction:column;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);gap:18px}
+.viewer.open{display:flex}
+.viewer .stage{border:3px solid var(--cream);border-radius:24px;padding:8px;max-width:min(94vw,1500px)}
+.viewer img{width:min(88vw,calc(72vh * 1.78),1500px);height:auto;max-height:72vh;border-radius:16px;object-fit:contain}
+.viewer .vcap{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;justify-content:center;text-align:center}
+.viewer .vcap b{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,30px)}
+.viewer .vcap span{color:var(--night);background:var(--c,var(--cream));padding:3px 12px;border-radius:999px;font-size:14px;font-weight:500}
+.vbtn{position:absolute;width:52px;height:52px;border-radius:50%;border:2px solid var(--cream);background:var(--night);color:var(--cream);display:grid;place-items:center;cursor:pointer}
+.vbtn:hover{background:var(--cream);color:var(--night)}
+.vbtn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.vclose{top:18px;right:18px}
+.vprev{left:18px;top:50%;transform:translateY(-50%)}
+.vnext{right:18px;top:50%;transform:translateY(-50%)}
+
+@media (max-width:860px){
+  .tile,.tile.t{grid-column:span 3}
+  .tile.f{grid-column:span 6}
+  .also-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 10px}
+  .chap-head p{display:none}
+  .people{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .friends{width:100%}
+  .logos{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 12px}
+  .logos img{width:calc(var(--w) * .72px);height:calc(var(--h) * .72px)}
+}
+@media (max-width:860px){
+  .plat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .plat-grid .tile:nth-child(5){grid-column:span 2}
+  .plat-grid .tile:nth-child(7){grid-column:2 / span 2}
+}
+@media (max-width:560px){
+  .tile,.tile.t{grid-column:span 3}
+  .tile.f{grid-column:span 6}
+  .tile.f .art{aspect-ratio:16/9}
+  .grid{gap:18px 10px}
+  .grid .frame{border-width:2px;border-radius:14px;padding:4px}
+  .grid .art{border-radius:10px}
+  .cap{flex-direction:column;gap:2px;padding:7px 2px 0}
+  .cap b{font-size:14px;line-height:1.2}
+  .cap span{text-align:left;font-size:11.5px;line-height:1.3}
+  .also-strip{gap:12px 8px}
+  .also-strip .cap b{font-size:11px;line-height:1.25}
+  .also-strip .frame{padding:3px;border-radius:10px}
+  .also-strip .art{border-radius:7px}
+  .reel .tile{width:58vw}
+  .vprev,.vnext{top:auto;bottom:18px;transform:none}
+  .contact{flex-direction:column;gap:22px;text-align:center}
+  .contact .mini{width:84px}
+  .bubble{padding:18px 22px}
+  .bubble p{font-size:14px}
+  .bubble .cta{font-size:16.5px;margin-bottom:8px}
+  .bubble::before{left:50%;top:-14px;transform:translateX(-50%) rotate(135deg)}
+  .bubble a{font-size:min(22px,calc((100vw - 86px) / 16.4));white-space:nowrap;letter-spacing:-.01em}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.reel{overflow-x:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Love Dynamo Innovation Labs, home">
+      <img class="abby" src="img/abby-emblem.svg" alt="">
+      <h1 class="lockup"><img src="img/love-dynamo-wordmark.png" alt="Love Dynamo"><span class="tagrow"><span class="bar" aria-hidden="true"></span><span class="t">INNOVATION LABS</span></span></h1>
+    </a>
+    <nav class="nav" aria-label="Sections"><a href="#work">Work</a><a href="#us">Us</a><a href="#contact">Say hello</a></nav>
+  </div>
+  <div class="wrap hero">
+    <div class="intro" id="top">
+      <h2 class="headline">World-class immersive experiences in <span style="color:var(--pink)">movement</span>, <span style="color:var(--lemon)">play</span> and <span style="color:var(--mint)">learning</span>.</h2>
+      <p class="sub">Across three decades, our team has helped create and launch landmark games, immersive fitness, wellness, sports and learning experiences while helping to shape and expand some of the world&#8217;s biggest brands.</p>
+      <nav class="pillars" id="work" aria-label="What we make">
+        <a class="pillar" href="#move" data-p="move" style="--k:var(--pink)" aria-current="false"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d='M2 12h4l2.5-6 4.5 12 2.5-6H22'/></svg></span><b>Move</b><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></a>
+        <a class="pillar" href="#play" data-p="play" style="--k:var(--lemon)" aria-current="false"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x='2' y='6.5' width='20' height='11' rx='5.5'/><path d='M7.5 10v4M5.5 12h4'/><path d='M15.5 11h.01M18 13.5h.01' stroke-width='3.4'/></svg></span><b>Play</b><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></a>
+        <a class="pillar" href="#learn" data-p="learn" style="--k:var(--mint)" aria-current="false"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d='M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2zM22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z'/></svg></span><b>Learn</b><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></a>
+      </nav>
+    </div>
+    <div class="friends"><span>Made alongside some big friends</span><div class="logos"><img src="img/brand-netflix.png" alt="Netflix" style="--w:84.3;--h:24.9"><img src="img/brand-disney.png" alt="Disney" style="--w:70.9;--h:29.6"><img src="img/brand-marvel.png" alt="Marvel" style="--w:69.0;--h:30.5"><img src="img/brand-hbo.png" alt="HBO" style="--w:71.0;--h:29.6"><img src="img/brand-dc.png" alt="DC" style="--w:37.1;--h:40"><img src="img/brand-warner-bros.png" alt="Warner Bros." style="--w:33.0;--h:40"><img src="img/brand-apple.png" alt="Apple" style="--w:32.2;--h:40"><img src="img/brand-rockstar.png" alt="Rockstar Games" style="--w:43.2;--h:40"><img src="img/brand-meta.png" alt="Meta" style="--w:88.0;--h:23.9"><img src="img/brand-xbox.png" alt="Xbox" style="--w:46.1;--h:40"><img src="img/brand-playstation.png" alt="PlayStation" style="--w:52.9;--h:39.7"><img src="img/brand-nintendo.png" alt="Nintendo" style="--w:89.2;--h:23.5"></div></div>
+  </div>
+  <section class="wrap plat" id="platforms" aria-labelledby="platH">
+    <div class="plat-head"><h2 id="platH"><span class="rb" aria-hidden="true"></span>Platforms we&#8217;re building for</h2><p>New projects in development</p></div>
+    <div class="plat-grid">
+      <button type="button" class="tile" style="--c:var(--sky)" data-t="Meta VR Glasses" data-m=""><span class="frame"><span class="art"><img src="img/plat-meta-glasses.jpg" alt="Meta VR Glasses key art" loading="lazy"></span></span><span class="cap"><b>Meta VR Glasses</b></span></button>
+      <button type="button" class="tile" style="--c:var(--violet)" data-t="XREAL Aura" data-m=""><span class="frame"><span class="art"><img src="img/plat-xreal-aura.jpg" alt="XREAL Aura key art" loading="lazy"></span></span><span class="cap"><b>XREAL Aura</b></span></button>
+      <button type="button" class="tile" style="--c:var(--lemon)" data-t="SPECS" data-m=""><span class="frame"><span class="art"><img src="img/plat-specs.jpg" alt="SPECS key art" loading="lazy"></span></span><span class="cap"><b>SPECS</b></span></button>
+      <button type="button" class="tile" style="--c:var(--tang)" data-t="Nex Playground" data-m=""><span class="frame"><span class="art"><img src="img/plat-nex.jpg" alt="Nex Playground key art" loading="lazy"></span></span><span class="cap"><b>Nex Playground</b></span></button>
+      <button type="button" class="tile" style="--c:var(--mint)" data-t="Steam Frame" data-m=""><span class="frame"><span class="art"><img src="img/plat-steam-frame.jpg" alt="Steam Frame key art" loading="lazy"></span></span><span class="cap"><b>Steam Frame</b></span></button>
+      <button type="button" class="tile" style="--c:var(--pink)" data-t="Apple Vision Pro" data-m=""><span class="frame"><span class="art"><img src="img/plat-vision-pro.jpg" alt="Apple Vision Pro key art" loading="lazy"></span></span><span class="cap"><b>Apple Vision Pro</b></span></button>
+      <button type="button" class="tile" style="--c:var(--lemon)" data-t="Nintendo Switch 2" data-m=""><span class="frame"><span class="art"><img src="img/plat-switch2.jpg" alt="Nintendo Switch 2 key art" loading="lazy"></span></span><span class="cap"><b>Nintendo Switch 2</b></span></button>
+    </div>
+  </section>
+  <div class="reel" id="reel" aria-label="A sample of our work"><div class="reel-track" id="reelTrack"></div></div>
+</header>
+
+<main>
+  <section class="chapter" id="move" style="--k:var(--pink)">
+    <div class="wrap">
+      <div class="chap-head"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d='M2 12h4l2.5-6 4.5 12 2.5-6H22'/></svg></span><h2>Move</h2><p>Fitness, wellness and healing</p></div>
+      <div class="grid">
+        <button type="button" class="tile" style="--c:var(--pink)" data-t="FunFitLand" data-m="Apple Vision Pro / Meta Quest"><span class="frame"><span class="art"><img src="img/funfitland_big.jpg" alt="FunFitLand key art" loading="lazy"></span></span><span class="cap"><b>FunFitLand</b><span>Apple Vision Pro / Meta Quest</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="DISC" data-m="ASICS / Meta Quest"><span class="frame"><span class="art"><img src="img/disc_big.jpg" alt="DISC key art" loading="lazy"></span></span><span class="cap"><b>DISC</b><span>ASICS / Meta Quest</span></span></button>
+        <button type="button" class="tile" style="--c:var(--violet)" data-t="STARWAVE" data-m="Meta Quest"><span class="frame"><span class="art"><img src="img/starwave.jpg" alt="STARWAVE key art" loading="lazy"></span></span><span class="cap"><b>STARWAVE</b><span>Meta Quest</span></span></button>
+        <button type="button" class="tile" style="--c:var(--mint)" data-t="FlowFit" data-m="Apple Vision Pro / Meta Quest"><span class="frame"><span class="art"><img src="img/flowfit.jpg" alt="FlowFit key art" loading="lazy"></span></span><span class="cap"><b>FlowFit</b><span>Apple Vision Pro / Meta Quest</span></span></button>
+        <button type="button" class="tile" style="--c:var(--sky)" data-t="Supernatural" data-m="Meta Quest"><span class="frame"><span class="art"><img src="img/supernatural.jpg" alt="Supernatural key art" loading="lazy"></span></span><span class="cap"><b>Supernatural</b><span>Meta Quest</span></span></button>
+        <button type="button" class="tile" style="--c:var(--lemon)" data-t="REAL System" data-m="Penumbra"><span class="frame"><span class="art"><img src="img/happyvalley.jpg" alt="REAL System key art" loading="lazy"></span></span><span class="cap"><b>REAL System</b><span>Penumbra</span></span></button>
+        <button type="button" class="tile" style="--c:var(--pink)" data-t="Black Box VR Fitness" data-m="Best Startup, CES"><span class="frame"><span class="art"><img src="img/blackbox.jpg" alt="Black Box VR Fitness key art" loading="lazy"></span></span><span class="cap"><b>Black Box VR Fitness</b><span>Best Startup, CES</span></span></button>
+        <button type="button" class="tile" style="--c:var(--mint)" data-t="Kinect Motion Games" data-m="Xbox 360 Kinect"><span class="frame"><span class="art"><img src="img/kinect.jpg" alt="Kinect Motion Games key art" loading="lazy"></span></span><span class="cap"><b>Kinect Motion Games</b><span>Xbox 360 Kinect</span></span></button>
+        <button type="button" class="tile" style="--c:var(--pink)" data-t="Rockstar Games presents Table Tennis" data-m="Rockstar Games / Wii"><span class="frame"><span class="art"><img src="img/tabletennis.jpg" alt="Rockstar Games presents Table Tennis key art" loading="lazy"></span></span><span class="cap"><b>Rockstar Games presents Table Tennis</b><span>Rockstar Games / Wii</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="Power Rangers Samurai" data-m="Bandai Namco / Wii"><span class="frame"><span class="art"><img src="img/powerrangers.jpg" alt="Power Rangers Samurai key art" loading="lazy"></span></span><span class="cap"><b>Power Rangers Samurai</b><span>Bandai Namco / Wii</span></span></button>
+      </div>
+    </div>
+  </section>
+  <section class="chapter" id="play" style="--k:var(--lemon)">
+    <div class="wrap">
+      <div class="chap-head"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x='2' y='6.5' width='20' height='11' rx='5.5'/><path d='M7.5 10v4M5.5 12h4'/><path d='M15.5 11h.01M18 13.5h.01' stroke-width='3.4'/></svg></span><h2>Play</h2><p>Games and the worlds behind them</p></div>
+      <div class="grid">
+        <button type="button" class="tile" style="--c:var(--mint)" data-t="Minecraft: Story Mode" data-m="Mojang"><span class="frame"><span class="art"><img src="img/minecraft.jpg" alt="Minecraft: Story Mode key art" loading="lazy"></span></span><span class="cap"><b>Minecraft: Story Mode</b><span>Mojang</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="The Walking Dead" data-m="Skybound"><span class="frame"><span class="art"><img src="img/walkingdead.jpg" alt="The Walking Dead key art" loading="lazy"></span></span><span class="cap"><b>The Walking Dead</b><span>Skybound</span></span></button>
+        <button type="button" class="tile" style="--c:var(--violet)" data-t="Grand Theft Auto" data-m="Rockstar Games"><span class="frame"><span class="art"><img src="img/gta.jpg" alt="Grand Theft Auto key art" loading="lazy"></span></span><span class="cap"><b>Grand Theft Auto</b><span>Rockstar Games</span></span></button>
+        <button type="button" class="tile" style="--c:var(--lemon)" data-t="Pac-Man &amp; Galaga" data-m="Bandai Namco"><span class="frame"><span class="art"><img src="img/pacman.jpg" alt="Pac-Man &amp; Galaga key art" loading="lazy"></span></span><span class="cap"><b>Pac-Man &amp; Galaga</b><span>Bandai Namco</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="Guardians of the Galaxy" data-m="Marvel / Disney"><span class="frame"><span class="art"><img src="img/guardians.jpg" alt="Guardians of the Galaxy key art" loading="lazy"></span></span><span class="cap"><b>Guardians of the Galaxy</b><span>Marvel / Disney</span></span></button>
+        <button type="button" class="tile" style="--c:var(--sky)" data-t="Batman: The Telltale Series" data-m="DC / Warner Bros."><span class="frame"><span class="art"><img src="img/batman.jpg" alt="Batman: The Telltale Series key art" loading="lazy"></span></span><span class="cap"><b>Batman: The Telltale Series</b><span>DC / Warner Bros.</span></span></button>
+        <button type="button" class="tile" style="--c:var(--lemon)" data-t="Game of Thrones" data-m="HBO"><span class="frame"><span class="art"><img src="img/got.jpg" alt="Game of Thrones key art" loading="lazy"></span></span><span class="cap"><b>Game of Thrones</b><span>HBO</span></span></button>
+        <button type="button" class="tile" style="--c:var(--pink)" data-t="DARK SOULS" data-m="FromSoftware / Bandai Namco"><span class="frame"><span class="art"><img src="img/darksouls.jpg" alt="DARK SOULS key art" loading="lazy"></span></span><span class="cap"><b>DARK SOULS</b><span>FromSoftware / Bandai Namco</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="Grand Theft Auto (Mobile)" data-m="Rockstar Games"><span class="frame"><span class="art"><img src="img/gta-handheld.jpg" alt="Grand Theft Auto (Mobile) key art" loading="lazy"></span></span><span class="cap"><b>Grand Theft Auto (Mobile)</b><span>Rockstar Games</span></span></button>
+        <button type="button" class="tile" style="--c:var(--violet)" data-t="The Wolf Among Us" data-m="DC / Vertigo"><span class="frame"><span class="art"><img src="img/wolf.jpg" alt="The Wolf Among Us key art" loading="lazy"></span></span><span class="cap"><b>The Wolf Among Us</b><span>DC / Vertigo</span></span></button>
+        <button type="button" class="tile" style="--c:var(--tang)" data-t="Tales from the Borderlands" data-m="Gearbox / 2K"><span class="frame"><span class="art"><img src="img/borderlands.jpg" alt="Tales from the Borderlands key art" loading="lazy"></span></span><span class="cap"><b>Tales from the Borderlands</b><span>Gearbox / 2K</span></span></button>
+        <button type="button" class="tile" style="--c:var(--sky)" data-t="Midnight Club: Los Angeles" data-m="Rockstar Games"><span class="frame"><span class="art"><img src="img/midnight.jpg" alt="Midnight Club: Los Angeles key art" loading="lazy"></span></span><span class="cap"><b>Midnight Club: Los Angeles</b><span>Rockstar Games</span></span></button>
+      </div>
+      <div class="also"><p>Plus a few more we had a hand in</p><div class="also-strip"><button type="button" class="tile" style="--c:var(--lemon)" data-t="Audio Trip" data-m=""><span class="frame"><span class="art"><img src="img/audiotrip.jpg" alt="Audio Trip key art" loading="lazy"></span></span><span class="cap"><b>Audio Trip</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Firewatch" data-m=""><span class="frame"><span class="art"><img src="img/firewatch.jpg" alt="Firewatch key art" loading="lazy"></span></span><span class="cap"><b>Firewatch</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Bully: Scholarship Edition" data-m=""><span class="frame"><span class="art"><img src="img/bully.jpg" alt="Bully: Scholarship Edition key art" loading="lazy"></span></span><span class="cap"><b>Bully: Scholarship Edition</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Red Dead Redemption" data-m=""><span class="frame"><span class="art"><img src="img/reddead.jpg" alt="Red Dead Redemption key art" loading="lazy"></span></span><span class="cap"><b>Red Dead Redemption</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="The Warriors" data-m=""><span class="frame"><span class="art"><img src="img/warriors.jpg" alt="The Warriors key art" loading="lazy"></span></span><span class="cap"><b>The Warriors</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Microdose VR" data-m=""><span class="frame"><span class="art"><img src="img/microdose.jpg" alt="Microdose VR key art" loading="lazy"></span></span><span class="cap"><b>Microdose VR</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Pinball FX2 VR" data-m=""><span class="frame"><span class="art"><img src="img/pinballfx2vr.jpg" alt="Pinball FX2 VR key art" loading="lazy"></span></span><span class="cap"><b>Pinball FX2 VR</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Pixel Ripped 1989" data-m=""><span class="frame"><span class="art"><img src="img/pixelripped.jpg" alt="Pixel Ripped 1989 key art" loading="lazy"></span></span><span class="cap"><b>Pixel Ripped 1989</b></span></button><button type="button" class="tile" style="--c:var(--lemon)" data-t="Rock Band 3" data-m=""><span class="frame"><span class="art"><img src="img/rockband.jpg" alt="Rock Band 3 key art" loading="lazy"></span></span><span class="cap"><b>Rock Band 3</b></span></button></div></div>
+    </div>
+  </section>
+  <section class="chapter" id="learn" style="--k:var(--mint)">
+    <div class="wrap">
+      <div class="chap-head"><span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d='M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2zM22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z'/></svg></span><h2>Learn</h2><p>Play that teaches</p></div>
+      <div class="grid">
+        <button type="button" class="tile" style="--c:var(--mint)" data-t="Miacademy" data-m="Miaplaza, Online Learning"><span class="frame"><span class="art"><img src="img/miaplaza.jpg" alt="Miacademy key art" loading="lazy"></span></span><span class="cap"><b>Miacademy</b><span>Miaplaza, Online Learning</span></span></button>
+        <button type="button" class="tile" style="--c:var(--mint)" data-t="REAL System y-Series" data-m="Penumbra, Immersive Rehab"><span class="frame"><span class="art"><img src="img/real-yseries.jpg" alt="REAL System y-Series key art" loading="lazy"></span></span><span class="cap"><b>REAL System y-Series</b><span>Penumbra, Immersive Rehab</span></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="us" id="us">
+    <div class="wrap">
+      <div class="rainbow" aria-hidden="true"></div>
+      <h2>The minds behind the&nbsp;lab.</h2>
+      <div class="people">
+        <article class="who" style="--c:var(--mint)"><img class="face" src="img/robin-portrait.jpg" alt="Robin Orr"><div><b>Robin Orr</b><small>Leadership Partner</small><p>Immersive experience designer and lifelong educator, now leading STEM learning products for Silicon Valley online education and innovative play for emerging XR platforms.</p></div></article>
+        <article class="who" style="--c:var(--pink)"><img class="face" src="img/job-portrait.jpg" alt="Job J. Stauffer"><div><b>Job J. Stauffer</b><small>Leadership Partner</small><p>Three decades shaping blockbuster games and billion-dollar brands, now pioneering design and innovation for play in immersive fitness, wellness, healthcare, and beyond.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <img class="mini" src="img/abby-badge.svg" alt="">
+      <div class="bubble"><p>Got a brand, project or dream you&#8217;d like to bring to life?</p><strong class="cta">Let&#8217;s build something fun together.</strong><a href="mailto:contact@lovedynamo.fun">contact@lovedynamo.fun</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Love Dynamo Innovation Labs, LLC</p>
+    <p>Titles, logos and key art belong to their owners and appear here to show work our team contributed to.</p>
+  </div>
+</footer>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Project viewer">
+  <div class="stage"><img id="vImg" alt=""></div>
+  <div class="vcap"><b id="vT"></b><span id="vM"></span></div>
+  <button class="vbtn vclose" id="vClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="vbtn vprev" id="vPrev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="vbtn vnext" id="vNext" type="button" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
+<script>
+(function(){
+  var all=[].slice.call(document.querySelectorAll('.tile')),tiles=all,v=document.getElementById('viewer');
+  var vi=document.getElementById('vImg'),vt=document.getElementById('vT'),vm=document.getElementById('vM'),cur=-1,last=null;
+  function show(i){
+    cur=(i+tiles.length)%tiles.length; var t=tiles[cur],img=t.querySelector('img');
+    vi.src=img.src; vi.alt=img.alt; vt.textContent=t.getAttribute('data-t'); vm.textContent=t.getAttribute('data-m');
+    v.style.setProperty('--c',getComputedStyle(t).getPropertyValue('--c'));
+  }
+  function open(i){last=document.activeElement;show(i);v.classList.add('open');document.body.style.overflow='hidden';document.getElementById('vClose').focus()}
+  function close(){v.classList.remove('open');document.body.style.overflow='';if(last)last.focus()}
+  tiles.forEach(function(t,i){t.addEventListener('click',function(){open(i)})});
+  var order=['FunFitLand','Minecraft: Story Mode','Miacademy','STARWAVE','The Walking Dead','Supernatural','Grand Theft Auto','DISC','Batman: The Telltale Series','Pac-Man & Galaga','FlowFit','The Wolf Among Us','Power Rangers Samurai','DARK SOULS','Guardians of the Galaxy','Black Box VR Fitness','Game of Thrones','REAL System','Midnight Club: Los Angeles','Kinect Motion Games','Rockstar Games presents Table Tennis','Tales from the Borderlands','REAL System y-Series'];
+  var track=document.getElementById('reelTrack'),byT={};
+  tiles.forEach(function(t,i){byT[t.getAttribute('data-t')]=i});
+  [].forEach.call(document.querySelectorAll('#move .tile,#play .tile,#learn .tile'),function(t){if(t.closest('.also'))return;var n=t.getAttribute('data-t');if(order.indexOf(n)<0)order.push(n)});
+  function addSet(hidden){order.forEach(function(name){var i=byT[name];if(i===undefined)return;var c=tiles[i].cloneNode(true);c.removeAttribute('class');c.className='tile';
+    if(hidden){c.setAttribute('aria-hidden','true');c.tabIndex=-1}
+    c.addEventListener('click',function(){open(i)});track.appendChild(c)})}
+  addSet(false);addSet(true);
+  (function(){
+    var reel=document.getElementById('reel'); if(!reel) return;
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine=window.matchMedia&&window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    [].forEach.call(track.querySelectorAll('img'),function(i){i.draggable=false});
+    function half(){return track.scrollWidth/2}
+    if(fine){
+      /* desktop: GPU-smooth transform reel with drag, momentum and trackpad swipe */
+      reel.classList.add('fine');
+      var pos=0,cur=0,vel=0,last=0,hover=false,down=false,moved=false,idleAt=0,AUTO=still?0:55;
+      var sx=0,sp=0,lx=0,lt=0;
+      function idle(ms){idleAt=performance.now()+(ms||1400)}
+      reel.addEventListener('mouseenter',function(){hover=true});
+      reel.addEventListener('mouseleave',function(){hover=false;idle(400)});
+      reel.addEventListener('focusin',function(){hover=true});reel.addEventListener('focusout',function(){hover=false});
+      reel.addEventListener('pointerdown',function(e){if(e.button!==0)return;down=true;moved=false;sx=lx=e.clientX;sp=pos;lt=performance.now();vel=0});
+      window.addEventListener('pointermove',function(e){
+        if(!down)return;var dx=e.clientX-sx;
+        if(!moved&&Math.abs(dx)>5){moved=true;reel.classList.add('dragging')}
+        if(moved){var now=performance.now(),dt=Math.max(1,now-lt);vel=0.8*vel+0.2*(-(e.clientX-lx)/dt*1000);lx=e.clientX;lt=now;pos=sp-dx}
+      });
+      window.addEventListener('pointerup',function(){if(!down)return;down=false;if(performance.now()-lt>90)vel=0;setTimeout(function(){reel.classList.remove('dragging')},0);idle()});
+      reel.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+      reel.addEventListener('wheel',function(e){
+        var dx=e.deltaX||(e.shiftKey?e.deltaY:0);
+        if(Math.abs(dx)>Math.abs(e.deltaY)||e.shiftKey){e.preventDefault();pos+=dx*(e.deltaMode===1?16:1);vel=0;idle()}
+      },{passive:false});
+      function step(t){
+        var dt=last?Math.min(t-last,50)/1000:0;last=t;
+        if(!down){
+          if(Math.abs(vel)>5){pos+=vel*dt;vel*=Math.exp(-dt*3.2);cur=0}
+          else{vel=0;var target=(hover||t<idleAt)?0:AUTO;cur+=(target-cur)*Math.min(1,dt*2.5);pos+=cur*dt}
+        }
+        var h=half();if(h>0){pos=((pos%h)+h)%h}
+        track.style.transform='translate3d('+(-pos)+'px,0,0)';
+        requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+      return;
+    }
+    /* touch: native momentum scrolling with gentle auto-drift */
+    var spos=0,slast=0,hold=false,resumeAt=0,speed=still?0:38;
+    function wake(ms){resumeAt=performance.now()+(ms||2200)}
+    function wrap(){var sl=reel.scrollLeft,h=half();if(Math.abs(sl-spos)>2){spos=sl;wake()}if(sl>=h){reel.scrollLeft=sl-h;spos-=h}else if(sl<=0&&performance.now()<resumeAt&&!hold){reel.scrollLeft=sl+h;spos+=h}}
+    reel.addEventListener('touchstart',function(){hold=true;wake()},{passive:true});
+    reel.addEventListener('touchend',function(){hold=false;wake()},{passive:true});
+    reel.addEventListener('scroll',wrap,{passive:true});
+    function sstep(t){
+      var dt=slast?Math.min(t-slast,50):0;slast=t;
+      if(speed&&!hold&&t>resumeAt){spos+=speed*dt/1000;var h=half();if(spos>=h)spos-=h;reel.scrollLeft=spos}
+      requestAnimationFrame(sstep)}
+    requestAnimationFrame(sstep);
+  })();
+  document.getElementById('vClose').addEventListener('click',close);
+  document.getElementById('vPrev').addEventListener('click',function(){show(cur-1)});
+  document.getElementById('vNext').addEventListener('click',function(){show(cur+1)});
+  v.addEventListener('click',function(e){if(e.target===v)close()});
+  v.addEventListener('keydown',function(e){
+    if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')show(cur-1); else if(e.key==='ArrowRight')show(cur+1);
+  });
+})();
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.pillar')),map={};
+  cards.forEach(function(c){map[c.getAttribute('data-p')]=c});
+  function mark(id){cards.forEach(function(c){c.setAttribute('aria-current',c===map[id]?'true':'false')})}
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)mark(e.target.id)})},{rootMargin:'-35% 0px -60% 0px'});
+  ['move','play','learn'].forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s)});
+  window.addEventListener('scroll',function(){if(window.scrollY<200)mark(null)},{passive:true});
+})();
+</script>
+</body>
+</html>
